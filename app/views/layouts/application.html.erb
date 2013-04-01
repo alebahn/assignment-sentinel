@@ -11,6 +11,16 @@
     <!--maybe later <%= image_tag("logo.png") %>-->
     <h1><%= @page_title || "Assignment Sentinel" %></h1>
     <h2>Watching over your due dates so you have to</h2>
+    <p class="userbar">
+      <% if session[:user_id] %>
+        Logged in as
+        <%= link_to User.find(session[:user_id]).name, user_path(session[:user_id]) %>
+        |
+        <%= link_to 'Log out', logout_url %>
+      <% else %>
+        <%= link_to 'register', register_url %>
+        <%= link_to 'log in', login_url %>
+      <% end %>
   </div>
   <div id="columns">
     <div id="side">

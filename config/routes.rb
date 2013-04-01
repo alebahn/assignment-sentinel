@@ -9,6 +9,9 @@ AssignmentSentinel::Application.routes.draw do
 
   resources :users
 
+  controller :users do
+    get 'register' => :new
+  end
 
   root :to => 'pages#index'
   # The priority is based upon order of creation:
