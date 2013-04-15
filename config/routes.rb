@@ -1,5 +1,11 @@
 AssignmentSentinel::Application.routes.draw do
 
+  resources :departments
+
+
+  resources :courses
+
+
   controller :sessions do
     get  'login' => :new
     post 'login' => :create
