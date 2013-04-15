@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :department_id %><br />
-    <%= f.number_field :department_id %>
+    <%= f.collection_select(:department_id, Department.all, :id, :abbr, :prompt => true) %>
   </div>
   <div class="field">
     <%= f.label :number %><br />
