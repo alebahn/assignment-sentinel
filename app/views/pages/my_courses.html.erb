@@ -4,12 +4,14 @@
   <tr>
     <th>Course Number</th>
     <th>Name</th>
+    <th># of Unfinished Assignments</th>
   </tr>
 
 <% @courses.each do |course| %>
   <tr>
     <td><%= course.course_number %></td>
     <td><%= course.name %></td>
+    <td><%= course.assignments.reject { |assignment| assignment.completed(@user) }.count %></td>
   </tr>
 <% end %>
 </table>

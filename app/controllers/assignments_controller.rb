@@ -2,7 +2,16 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    if params.has_key?(:user_id)
+      @assignments = User.find(params[:user_id]).assignments
+      if params.has_key?(:completed) or params.has_key?(:uncompleted)
+        @assignments.keep_if do |assignment|
+          assignment.completed(User.find(params[:user_id])) == params.has_key?(:completed)
+        end
+      end
+    else
+      @assignments = Assignment.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

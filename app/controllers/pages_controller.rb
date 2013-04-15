@@ -3,7 +3,8 @@ class PagesController < ApplicationController
 
   # GET /my_courses
   def my_courses
-    @courses = User.find_by_id(session[:user_id]).courses
+    @user = User.find_by_id(session[:user_id])
+    @courses = @user.courses
 
     respond_to do |format|
       format.html # index.html.erb
