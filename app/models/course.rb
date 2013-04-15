@@ -2,6 +2,7 @@ class Course < ActiveRecord::Base
   attr_accessible :department_id, :name, :number
 
   belongs_to :department
+  has_and_belongs_to_many :users
 
   validates :department, presence: true
   validates :name, presence: true

@@ -19,6 +19,8 @@ AssignmentSentinel::Application.routes.draw do
     get 'register' => :new
   end
 
+  get 'my_courses' => 'pages#my_courses'
+
   root :to => 'pages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
