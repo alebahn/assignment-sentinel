@@ -12,7 +12,7 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-    <td><%= assignment.course_id %></td>
+    <td><%= assignment.course.name %></td>
     <td><%= assignment.name %></td>
     <td><%= assignment.due_date %></td>
     <td><%= link_to 'Show', assignment %></td>
