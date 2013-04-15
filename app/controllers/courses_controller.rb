@@ -77,7 +77,7 @@ class CoursesController < ApplicationController
     @course.users << @user
 
     respond_to do |format|
-      format.html { redirect_to @course, notice: 'You were successfully added to the course.' }
+      format.html { redirect_to courses_url, notice: 'You were successfully added to the course.' }
     end
   end
 
@@ -88,7 +88,7 @@ class CoursesController < ApplicationController
     @course.users.delete(@user)
 
     respond_to do |format|
-      format.html { redirect_to @course, notice: 'You have successfully left the course.' }
+      format.html { redirect_to courses_url, notice: 'You have successfully left the course.' }
     end
   end
 

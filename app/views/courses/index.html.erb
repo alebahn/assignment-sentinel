@@ -8,7 +8,6 @@
     <th></th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @courses.each do |course| %>
@@ -23,7 +22,6 @@
         <%= link_to 'Join', "/courses/join/#{course.id}" %>
       <% end %>
     </td>
-    <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
