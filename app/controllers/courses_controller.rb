@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @user = User.find_by_id(session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -66,6 +67,28 @@ class CoursesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # PUT /courses/join/1
+  def join
+    @course = Course.find(params[:id])
+    @user = User.find(session[:user_id])
+    @course.users << @user
+
+    respond_to do |format|
+      format.html { redirect_to @course, notice: 'You were successfully added to the course.' }
+    end
+  end
+
+  # PUT /courses/leave/1
+  def leave
+    @course = Course.find(params[:id])
+    @user = User.find(session[:user_id])
+    @course.users.delete(@user)
+
+    respond_to do |format|
+      format.html { redirect_to @course, notice: 'You have successfully left the course.' }
     end
   end
 

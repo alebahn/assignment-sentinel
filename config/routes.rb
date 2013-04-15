@@ -5,6 +5,10 @@ AssignmentSentinel::Application.routes.draw do
 
   resources :courses
 
+  controller :courses do
+    get 'courses/join/:id' => :join
+    get 'courses/leave/:id' => :leave
+  end
 
   controller :sessions do
     get  'login' => :new
