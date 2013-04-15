@@ -1,5 +1,8 @@
 AssignmentSentinel::Application.routes.draw do
 
+  resources :completed_assignments
+
+
   resources :assignments
 
 

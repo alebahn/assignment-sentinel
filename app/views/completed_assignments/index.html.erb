@@ -1,0 +1,27 @@
+<h1>Listing completed_assignments</h1>
+
+<table>
+  <tr>
+    <th>Assignment</th>
+    <th>User</th>
+    <th>Done date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @completed_assignments.each do |completed_assignment| %>
+  <tr>
+    <td><%= completed_assignment.assignment_id %></td>
+    <td><%= completed_assignment.user_id %></td>
+    <td><%= completed_assignment.done_date %></td>
+    <td><%= link_to 'Show', completed_assignment %></td>
+    <td><%= link_to 'Edit', edit_completed_assignment_path(completed_assignment) %></td>
+    <td><%= link_to 'Destroy', completed_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Completed assignment', new_completed_assignment_path %>
