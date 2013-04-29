@@ -3,6 +3,6 @@ class CompletedAssignment < ActiveRecord::Base
   belongs_to :user
   belongs_to :assignment
 
-  validates :user_id, presence: true, uniqueness: true
-  validates :assignment_id, presence: true, uniqueness: true
+  validates :user_id, presence: true, uniqueness: { scope: :assignment_id }
+  validates :assignment_id, presence: true, uniqueness: { scope: :user_id }
 end

@@ -13,17 +13,17 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-  <%= form_tag completed_assignments_path, remote: true do |f| %>
-    <%= hidden_field_tag 'user', @user.id %>
-    <%= hidden_field_tag 'assignment', assignment.id %>
     <td><%= assignment.course.name %></td>
     <td><%= assignment.name %></td>
     <td><%= assignment.due_date %></td>
-    <td><%= check_box_tag "completed", "completed", assignment.completed(@user), onclick: "this.form.submit();" %></td>
+    <td><%= form_tag(completed_assignments_path, remote: true) do %>
+      <%= hidden_field_tag 'user', @user.id %>
+      <%= hidden_field_tag 'assignment', assignment.id %>
+      <%= check_box_tag "completed", "completed", assignment.completed(@user), onclick: "this.form.submit();" %>
+    <% end %></td>
     <td><%= link_to 'Show', assignment %></td>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
     <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
   </tr>
 <% end %>
 </table>
