@@ -2,11 +2,12 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    if params.has_key?(:user_id)
-      @assignments = User.find(params[:user_id]).assignments
+    if session.has_key?(:user_id)
+      @user = User.find(session[:user_id])
+      @assignments = @user.assignments
       if params.has_key?(:completed) or params.has_key?(:uncompleted)
         @assignments.keep_if do |assignment|
-          assignment.completed(User.find(params[:user_id])) == params.has_key?(:completed)
+          assignment.completed(@user) == params.has_key?(:completed)
         end
       end
     else

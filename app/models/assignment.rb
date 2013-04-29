@@ -7,6 +7,6 @@ class Assignment < ActiveRecord::Base
   validates :name, presence: true
 
   def completed(user)
-    user.completed_assignments.include?(self)
+    return user.completed_assignments.where(assignment_id: id).count > 0
   end
 end

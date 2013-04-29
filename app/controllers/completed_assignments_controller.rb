@@ -40,7 +40,7 @@ class CompletedAssignmentsController < ApplicationController
   # POST /completed_assignments
   # POST /completed_assignments.json
   def create
-    @completed_assignment = CompletedAssignment.new(params[:completed_assignment])
+    @completed_assignment = CompletedAssignment.new(user_id: params[:user], assignment_id: params[:assignment])
 
     respond_to do |format|
       if @completed_assignment.save
