@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :department_id %><br />
+    <%= f.label :department_id %> <%= link_to 'Add New', new_department_path %><br />
     <%= f.collection_select(:department_id, Department.all, :id, :abbr, :prompt => true) %>
   </div>
   <div class="field">
