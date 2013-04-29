@@ -18,7 +18,7 @@
     <%= hidden_field_tag 'assignment', assignment.id %>
     <td><%= assignment.course.name %></td>
     <td><%= assignment.name %></td>
-    <td><%= assignment.due_date %><%= assignment.completed(@user) %></td>
+    <td><%= assignment.due_date %></td>
     <td><%= check_box_tag "completed", "completed", assignment.completed(@user), onclick: "this.form.submit();" %></td>
     <td><%= link_to 'Show', assignment %></td>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

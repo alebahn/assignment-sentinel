@@ -40,16 +40,15 @@ class CompletedAssignmentsController < ApplicationController
   # POST /completed_assignments
   # POST /completed_assignments.json
   def create
-    @completed_assignment = CompletedAssignment.new(user_id: params[:user], assignment_id: params[:assignment])
+    if params[:completed]
+      CompletedAssignment.new(user_id: params[:user], assignment_id: params[:assignment]).save
+    else
+      CompletedAssignment.where(user_id: params[:user]).where(assignment_id: params[:assignment]).first.destroy
+    end
 
     respond_to do |format|
-      if @completed_assignment.save
-        format.html { redirect_to @completed_assignment, notice: 'Completed assignment was successfully created.' }
-        format.json { render json: @completed_assignment, status: :created, location: @completed_assignment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @completed_assignment.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to assignments_path}
+      format.json { render json: assignments_path, status: :created}
     end
   end
 
