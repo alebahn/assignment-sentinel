@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
   skip_before_filter :authorize, only: [:index]
 
+  # GET /
+  def index
+    @joke = Joke.find(:random).body
+  end
+
   # GET /my_courses
   def my_courses
     @user = User.find_by_id(session[:user_id])
